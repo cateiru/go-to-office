@@ -1,5 +1,7 @@
+import { Top } from "./components/Top";
+
 const Page = () => {
-  return <></>;
+  return <Top />;
 };
 
 export default Page;
