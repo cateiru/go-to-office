@@ -4,6 +4,8 @@ import React from "react";
 import { History } from "../utils/indexeddb";
 import { getCurrentPosition } from "../utils/geolocation";
 import { useIndexedDBStore } from "use-indexeddb";
+import { useSetAtom } from "jotai";
+import { countAtom } from "../utils/atom";
 
 export type Returns = {
   inOffice: boolean;
@@ -15,6 +17,7 @@ export const useInOffice = (): Returns => {
   const [inOffice, setInOffice] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const { add } = useIndexedDBStore<History>("history");
+  const setCount = useSetAtom(countAtom);
 
   React.useEffect(() => {
     // 出社ダイアログは3秒で消える
@@ -39,6 +42,7 @@ export const useInOffice = (): Returns => {
       longitude: position.coords.longitude,
     };
     await add(column);
+    setCount((count) => count + 1);
 
     setInOffice(true);
     setLoading(false);

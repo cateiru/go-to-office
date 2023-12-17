@@ -7,3 +7,5 @@ export const officePositionAtom = atomWithStorage<OfficePosition | null>(
   "office_position",
   null
 );
+
+export const countAtom = atomWithStorage<number>("count", 0);

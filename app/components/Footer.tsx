@@ -9,6 +9,10 @@ export const Footer = () => {
           Copyright 2023{" "}
           <Link href="https://cateiru.com" isExternal>
             cateiru
+          </Link>{" "}
+          -{" "}
+          <Link href="https://github.com/cateiru/go-to-office" isExternal>
+            GitHub
           </Link>
         </Text>
       </Center>

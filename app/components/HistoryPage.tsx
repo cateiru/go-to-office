@@ -26,7 +26,7 @@ export const HistoryPage = () => {
           background="linear-gradient(90deg, #12C2E9 0%, #c471ed 50%, #f64f59 100%)"
           backgroundClip="text"
         >
-          履歴
+          偉業の記録
         </Heading>
       </Center>
       <TableContainer maxW="400px" m="auto" mb="2rem">
