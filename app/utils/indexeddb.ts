@@ -18,6 +18,8 @@ export const DBConfig: IndexedDBConfig = {
 };
 
 export interface History {
+  id?: number;
+
   timestamp: number;
   type: "in_office";
 

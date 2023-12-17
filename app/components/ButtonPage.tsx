@@ -7,8 +7,6 @@ import { useInOffice } from "./useInOffice";
 export const ButtonPage = () => {
   const { inOffice, loading, handleInOffice } = useInOffice();
 
-  console.log(inOffice);
-
   return (
     <Center w="100%" h="100vh">
       <Box>

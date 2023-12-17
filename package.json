@@ -15,12 +15,17 @@
     "@emotion/styled": "^11.11.0",
     "framer-motion": "^10.16.16",
     "idb": "^8.0.0",
+    "jotai": "^2.6.0",
+    "leaflet": "^1.9.4",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18",
+    "react-icons": "^4.12.0",
+    "react-leaflet": "^4.2.1",
     "use-indexeddb": "^2.0.2"
   },
   "devDependencies": {
+    "@types/leaflet": "^1.9.8",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
