@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "@chakra-ui/react";
+import { Box, Button, ButtonProps, Center, Spinner } from "@chakra-ui/react";
 import React from "react";
 
 type Props = React.PropsWithChildren<ButtonProps>;
@@ -21,6 +21,12 @@ export const OfficeButton = React.forwardRef<HTMLButtonElement, Props>(
         _active={{
           transform: "scale(0.9)",
         }}
+        spinner={
+          <Box w="15rem" h="15rem">
+            <Spinner size="xl" thickness="5px" />
+          </Box>
+        }
+        {...props}
       >
         {props.children}
       </Button>

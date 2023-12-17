@@ -1,7 +1,14 @@
+"use client";
+
 import { Box, Center, Heading } from "@chakra-ui/react";
 import { OfficeButton } from "./OfficeButton";
+import { useInOffice } from "./useInOffice";
 
 export const ButtonPage = () => {
+  const { inOffice, loading, handleInOffice } = useInOffice();
+
+  console.log(inOffice);
+
   return (
     <Center w="100%" h="100vh">
       <Box>
@@ -14,7 +21,9 @@ export const ButtonPage = () => {
           出社できて偉いボタン
         </Heading>
         <Center>
-          <OfficeButton>出社</OfficeButton>
+          <OfficeButton onClick={handleInOffice} isLoading={loading}>
+            出社
+          </OfficeButton>
         </Center>
       </Box>
     </Center>

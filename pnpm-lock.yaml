@@ -20,6 +20,9 @@ dependencies:
   framer-motion:
     specifier: ^10.16.16
     version: 10.16.16(react-dom@18.2.0)(react@18.2.0)
+  idb:
+    specifier: ^8.0.0
+    version: 8.0.0
   next:
     specifier: 14.0.4
     version: 14.0.4(react-dom@18.2.0)(react@18.2.0)
@@ -29,6 +32,12 @@ dependencies:
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
+  react-indexed-db-hook:
+    specifier: ^1.0.14
+    version: 1.0.14(react-dom@18.2.0)(react@18.2.0)
+  use-indexeddb:
+    specifier: ^2.0.2
+    version: 2.0.2(react@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -2701,6 +2710,10 @@ packages:
       react-is: 16.13.1
     dev: false
 
+  /idb@8.0.0:
+    resolution: {integrity: sha512-l//qvlAKGmQO31Qn7xdzagVPPaHTxXx199MhrAFuVBTPqydcPYBWjkrbv4Y0ktB+GmWOiwHl237UUOrLmQxLvw==}
+    dev: false
+
   /ignore@5.3.0:
     resolution: {integrity: sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg==}
     engines: {node: '>= 4'}
@@ -3317,6 +3330,16 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.2.45)(react@18.2.0)
     dev: false
 
+  /react-indexed-db-hook@1.0.14(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-tQ6rWofgXUCBhZp9pRpWzthzPbjqcll5uXMo07lbQTKl47VyL9nw9wfVswRxxzS5yj5Sq/VHUkNUjamWbA/M/w==}
+    peerDependencies:
+      react: ^18.2.0
+      react-dom: ^18.2.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -3780,6 +3803,15 @@ packages:
       '@types/react': 18.2.45
       react: 18.2.0
       tslib: 2.6.2
+    dev: false
+
+  /use-indexeddb@2.0.2(react@18.2.0):
+    resolution: {integrity: sha512-pF1Gnrdg7wYvSKAXQvITP0KDVFnecjfckxLAtne6WYDJfbGaeOG7038sZjpR9SrcS9xrjKLJSjeakkYzHyhhEw==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      react: '>=17'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /use-sidecar@1.1.2(@types/react@18.2.45)(react@18.2.0):

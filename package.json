@@ -14,9 +14,11 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "framer-motion": "^10.16.16",
+    "idb": "^8.0.0",
     "next": "14.0.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "use-indexeddb": "^2.0.2"
   },
   "devDependencies": {
     "@types/node": "^20",
