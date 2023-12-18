@@ -2,16 +2,15 @@
 
 ## Getting Started
 
-First, run the development server:
+```bash
+pnpm i
+pnpm dev
+```
+
+## Build
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm build
 ```
 
 ## LICENSE
