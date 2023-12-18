@@ -9,7 +9,7 @@ import { updateAtom, officePositionAtom } from "../utils/atom";
 
 export type Returns = {
   inOffice: boolean;
-  handleInOffice: () => Promise<void>;
+  handleInOffice: () => Promise<number>;
 };
 
 export const useInOffice = (): Returns => {
@@ -62,6 +62,8 @@ export const useInOffice = (): Returns => {
     setUpdate((v) => !v);
 
     setInOffice(true);
+
+    return distance;
   };
 
   return { inOffice, handleInOffice };

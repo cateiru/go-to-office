@@ -9,14 +9,17 @@ import React from "react";
 export const ButtonPage = () => {
   const [loading, setLoading] = React.useState(false);
   const [error, setError] = React.useState<Error | null>(null);
+  const [distance, setDistance] = React.useState<number>(0);
   const { inOffice, handleInOffice } = useInOffice();
 
   const handleClick = () => {
     setError(null);
     setLoading(true);
+    setDistance(0);
 
     handleInOffice()
-      .then(() => {
+      .then((distance) => {
+        setDistance(distance);
         setLoading(false);
       })
       .catch((e) => {
@@ -52,7 +55,7 @@ export const ButtonPage = () => {
         ) : (
           <Box h="3.1rem"></Box>
         )}
-        <SuccessDialog isSuccess={inOffice} />
+        <SuccessDialog isSuccess={inOffice} distance={distance} />
       </Box>
     </Center>
   );
