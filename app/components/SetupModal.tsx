@@ -47,7 +47,7 @@ export const SetupModal = () => {
   const Map = React.useMemo(
     () =>
       dynamic(() => import("./Map").then((components) => components.Map), {
-        loading: () => <Skeleton w="100%" h="500px" />,
+        loading: () => <Skeleton w="100%" h="400px" />,
         ssr: false,
       }),
     []

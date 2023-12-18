@@ -20,7 +20,7 @@ const GetMapEvents = (props: Props) => {
 
 export const Map = (props: Props) => {
   return (
-    <Box w="100%" h="500px" position="relative">
+    <Box w="100%" h="400px" position="relative">
       <Box
         position="absolute"
         zIndex="1500"
