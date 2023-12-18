@@ -5,7 +5,7 @@ import { History } from "../utils/indexeddb";
 import { calcDistance, getCurrentPosition } from "../utils/geolocation";
 import { useIndexedDBStore } from "use-indexeddb";
 import { useAtomValue, useSetAtom } from "jotai";
-import { countAtom, officePositionAtom } from "../utils/atom";
+import { updateAtom, officePositionAtom } from "../utils/atom";
 
 export type Returns = {
   inOffice: boolean;
@@ -15,7 +15,7 @@ export type Returns = {
 export const useInOffice = (): Returns => {
   const [inOffice, setInOffice] = React.useState(false);
   const { add } = useIndexedDBStore<History>("history");
-  const setCount = useSetAtom(countAtom);
+  const setUpdate = useSetAtom(updateAtom);
   const officePosition = useAtomValue(officePositionAtom);
 
   React.useEffect(() => {
@@ -48,7 +48,7 @@ export const useInOffice = (): Returns => {
       }
     );
     if (distance > 300) {
-      throw new Error("オフィスから遠すぎます");
+      throw new Error(`オフィスから遠すぎます (${Math.floor(distance)}m)`);
     }
 
     const column: History = {
@@ -59,7 +59,7 @@ export const useInOffice = (): Returns => {
       longitude: position.coords.longitude,
     };
     await add(column);
-    setCount((count) => count + 1);
+    setUpdate((v) => !v);
 
     setInOffice(true);
   };

@@ -50,7 +50,7 @@ export const ButtonPage = () => {
             {error.message}
           </Text>
         ) : (
-          <Box h="3rem"></Box>
+          <Box h="3.1rem"></Box>
         )}
         <SuccessDialog isSuccess={inOffice} />
       </Box>

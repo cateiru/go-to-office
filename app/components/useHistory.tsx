@@ -5,7 +5,7 @@ import { History } from "../utils/indexeddb";
 import React from "react";
 import { calcDistance } from "../utils/geolocation";
 import { useAtomValue } from "jotai";
-import { countAtom, officePositionAtom } from "../utils/atom";
+import { updateAtom, officePositionAtom } from "../utils/atom";
 
 export interface CalcHistory extends History {
   distance: number;
@@ -21,7 +21,7 @@ export const useHistory = (): Returns => {
   const [histories, setHistories] = React.useState<CalcHistory[]>([]);
   const [loading, setLoading] = React.useState(false);
   const officePosition = useAtomValue(officePositionAtom);
-  const count = useAtomValue(countAtom);
+  const update = useAtomValue(updateAtom);
 
   React.useEffect(() => {
     if (!officePosition) return;
@@ -49,7 +49,7 @@ export const useHistory = (): Returns => {
       setHistories(calcHistories.reverse());
       setLoading(false);
     })();
-  }, [officePosition, count]);
+  }, [officePosition, update]);
 
   return { histories, loading };
 };

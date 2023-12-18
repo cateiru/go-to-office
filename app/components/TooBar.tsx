@@ -11,14 +11,15 @@ import {
   Center,
   useDisclosure,
 } from "@chakra-ui/react";
-import { countAtom, officePositionAtom } from "../utils/atom";
+import { updateAtom, officePositionAtom } from "../utils/atom";
 import { useResetAtom } from "jotai/utils";
 import React from "react";
 import { useIndexedDBStore } from "use-indexeddb";
+import { useSetAtom } from "jotai";
 
 export const ToolBar = () => {
   const resetOfficePosition = useResetAtom(officePositionAtom);
-  const setCount = useResetAtom(countAtom);
+  const setUpdate = useSetAtom(updateAtom);
   const { deleteAll } = useIndexedDBStore<History>("history");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,7 +27,7 @@ export const ToolBar = () => {
 
   const deleteHistories = () => {
     deleteAll();
-    setCount();
+    setUpdate((v) => !v);
     onClose();
   };
 
