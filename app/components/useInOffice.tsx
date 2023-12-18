@@ -2,22 +2,21 @@
 
 import React from "react";
 import { History } from "../utils/indexeddb";
-import { getCurrentPosition } from "../utils/geolocation";
+import { calcDistance, getCurrentPosition } from "../utils/geolocation";
 import { useIndexedDBStore } from "use-indexeddb";
-import { useSetAtom } from "jotai";
-import { countAtom } from "../utils/atom";
+import { useAtomValue, useSetAtom } from "jotai";
+import { countAtom, officePositionAtom } from "../utils/atom";
 
 export type Returns = {
   inOffice: boolean;
-  loading: boolean;
   handleInOffice: () => Promise<void>;
 };
 
 export const useInOffice = (): Returns => {
   const [inOffice, setInOffice] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
   const { add } = useIndexedDBStore<History>("history");
   const setCount = useSetAtom(countAtom);
+  const officePosition = useAtomValue(officePositionAtom);
 
   React.useEffect(() => {
     // 出社ダイアログは3秒で消える
@@ -31,8 +30,26 @@ export const useInOffice = (): Returns => {
   }, [inOffice]);
 
   const handleInOffice = async () => {
-    setLoading(true);
+    if (officePosition === null) {
+      throw new Error("オフィスが設定されていません");
+    }
+
     const position = await getCurrentPosition();
+
+    // オフィスからの距離を求めて、300m以上離れていたらエラー
+    const distance = calcDistance(
+      {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+      },
+      {
+        latitude: officePosition.latitude,
+        longitude: officePosition.longitude,
+      }
+    );
+    if (distance > 300) {
+      throw new Error("オフィスから遠すぎます");
+    }
 
     const column: History = {
       timestamp: new Date().getTime(),
@@ -45,8 +62,7 @@ export const useInOffice = (): Returns => {
     setCount((count) => count + 1);
 
     setInOffice(true);
-    setLoading(false);
   };
 
-  return { inOffice, loading, handleInOffice };
+  return { inOffice, handleInOffice };
 };
